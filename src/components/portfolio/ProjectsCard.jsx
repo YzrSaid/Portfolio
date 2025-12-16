@@ -149,7 +149,7 @@ const designProjects = [
     desc: "These are book covers I personally designed for my original stories published on Wattpad under my pen name, M.A. Yazar, including my account/writer logo.",
     tags: ["Layout", "Book Covers", "Wattpad"],
     images: [
-      MAYazar_logo, MAYazar_1, MAYazar_2, MAYazar_2, MAYazar_3, MAYazar_4, MAYazar_5, MAYazar_6, MAYazar_7
+      MAYazar_logo, MAYazar_1, MAYazar_2, MAYazar_3, MAYazar_4, MAYazar_5, MAYazar_6, MAYazar_7
     ],
   },
 ];
