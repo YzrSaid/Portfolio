@@ -138,9 +138,10 @@ const ProfileCard = () => {
           </div>
 
           <div className="space-y-3 w-full">
-            <h1 className="text-3xl md:text-3xl font-heading font-bold text-foreground tracking-tight">
-              Mohammad Aldrin Said
+            <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground tracking-tight">
+              Mohammad Aldrin&nbsp;Said
             </h1>
+
             <div className="inline-flex items-center px-3 py-1 rounded-lg bg-primary/5 text-primary text-sm font-medium border border-primary/10">
               Mobile & Web Developer
             </div>
