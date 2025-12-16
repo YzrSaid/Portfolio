@@ -23,9 +23,9 @@ import ByteSpace_1 from "../../assets/byteSpace/byteSpace_1.jpg";
 import ByteSpace_2 from "../../assets/byteSpace/byteSpace_2.jpg";
 
 // Perso images
-import Perso_1 from "../../assets/perso/perso_layout_1.png";
-import Perso_2 from "../../assets/perso/perso_layout_2.png";
-import Perso_3 from "../../assets/perso/perso_layout_3.png";
+import Perso_1 from "../../assets/perso/perso_layout_1.webp";
+import Perso_2 from "../../assets/perso/perso_layout_2.webp";
+import Perso_3 from "../../assets/perso/perso_layout_3.webp";
 
 // Crimson Map v2 images
 import CrimsonMap_v2_1 from "../../assets/crimson_v2/crimson_v2_business_card.png";

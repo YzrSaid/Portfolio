@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProfilePic from "../../assets/formal_picture.png";
+import ProfilePic from "../../assets/formal_picture.webp";
 import {
   MapPin,
   Mail,
