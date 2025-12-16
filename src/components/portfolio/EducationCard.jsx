@@ -97,7 +97,7 @@ const EducationCard = () => {
               <div
                 key={edu.id}
                 onMouseEnter={() => setHoveredEdu(index)}
-                className="relative pl-6 py-2 cursor-default transition-colors duration-300"
+                className="relative text-sm pl-6 py-2 cursor-default transition-colors duration-300"
               >
                 {/* Timeline Dot Container */}
                 <div className="absolute -left-[5px] top-3.5 h-2.5 w-2.5 rounded-full bg-muted-foreground/20 ring-4 ring-card z-10">

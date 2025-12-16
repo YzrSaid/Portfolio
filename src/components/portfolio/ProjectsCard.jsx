@@ -300,7 +300,7 @@ const ProjectsCard = () => {
           {/* Active underline */}
           {activeTab === "development" && (
             <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-t-full"></span>
-          )} 
+          )}
           {/* Hover underline effect */}
           <span className={`absolute bottom-0 left-0 right-0 h-0.5 bg-primary/30 rounded-t-full transition-transform duration-300 ${activeTab === "development"
             ? "scale-x-100"
@@ -350,10 +350,10 @@ const ProjectsCard = () => {
                       <Folder size={18} />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="font-semibold text-l text-foreground group-hover:text-primary transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-1">
+                      <p className="text-sm font-thin  text-muted-foreground line-clamp-2">
                         {project.desc}
                       </p>
                       <div className="flex gap-2 mt-2">
@@ -368,7 +368,11 @@ const ProjectsCard = () => {
                       </div>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight
+                    className="w-4 h-4 flex-none text-muted-foreground group-hover:text-primary transition-transform"
+                    style={{ width: "1rem", height: "1rem" }}
+                  />
+
                 </div>
               </a>
             ))
@@ -379,13 +383,13 @@ const ProjectsCard = () => {
                 className="p-5 rounded-xl bg-secondary/5 border border-border hover:bg-secondary/10 transition-all"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
-                  <h3 className="font-semibold text-foreground text-lg">{project.title}</h3>
+                  <h3 className="font-semibold text-foreground text-l">{project.title}</h3>
                   {project.tags && project.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5">
                       {project.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="inline-flex items-center px-3 py-1 rounded-full text-xs font-thin bg-secondary/30 text-muted-foreground border border-border"
+                          className="inline-flex text-[10px] px-2 py-0.5 rounded-full bg-background border border-border text-muted-foreground"
                         >
                           {tag}
                         </span>
