@@ -55,8 +55,8 @@ const ProfileCard = () => {
     e.preventDefault();
     setIsSending(true);
 
-    const serviceID = "service_fd9997b";
-    const publicKey = "rdIRRva8z9GSSh71Y";
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
     const notificationTemplateID = "template_w3owslc";
     const autoReplyTemplateID = "template_j623jkk";
 
