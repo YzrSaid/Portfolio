@@ -78,7 +78,7 @@ const devProjects = [
     bg: "bg-orange-500/10",
   },
   {
-    title: "Al-Furqan-Islamic-Institute-Enrollment-and-Academic-Management-System ",
+    title: "Al-Furqan Islamic Institute Enrollment and Academic Management System ",
     desc: "Madrasa Enrollment and Academic Management System",
     tags: ["Web App", "Vanilla HTML, JS, CSS"],
     link: "https://github.com/YzrSaid/Al-Furqan-Islamic-Institute-Enrollment-and-Academic-Management-System",
@@ -356,11 +356,11 @@ const ProjectsCard = () => {
                       <p className="text-sm font-thin  text-muted-foreground line-clamp-2">
                         {project.desc}
                       </p>
-                      <div className="flex gap-2 mt-2">
+                      <div className="flex flex-wrap gap-2 mt-2">
                         {project.tags.map((tag, i) => (
                           <span
                             key={i}
-                            className="text-[10px] px-2 py-0.5 rounded-full bg-background border border-border text-muted-foreground"
+                            className="text-[10px] px-2 py-0.5 rounded-full bg-background border border-border text-muted-foreground whitespace-nowrap"
                           >
                             {tag}
                           </span>

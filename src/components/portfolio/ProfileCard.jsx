@@ -26,7 +26,7 @@ const ProfileCard = () => {
   const [isSending, setIsSending] = useState(false);
 
   // Add this boolean flag
-  const [isResumeAvailable, setIsResumeAvailable] = useState(false);
+  const [isResumeAvailable, setIsResumeAvailable] = useState(true);
 
   const handleResumeClick = () => {
     if (isResumeAvailable) {

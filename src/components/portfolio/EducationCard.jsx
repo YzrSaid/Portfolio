@@ -20,7 +20,7 @@ const EducationCard = () => {
       id: 1,
       degree: "BS Information Technology",
       school: "Western Mindanao State University",
-      year: "2022 - Present (3rd Year)",
+      year: "2022 - Present (4th Year)",
     },
     {
       id: 2,
@@ -162,22 +162,28 @@ const EducationCard = () => {
             <div className="space-y-2 pb-1">
               {certifications.map((cert, i) => (
                 <button
-                  key={i}
-                  onClick={() => setSelectedImage(cert.image)}
-                  className="group w-full flex items-center justify-between p-3 rounded-xl bg-secondary/20 hover:bg-secondary/40 border border-transparent hover:border-border transition-all duration-300 text-left cursor-pointer"
+                  className="group w-full flex items-center p-3 rounded-xl
+                  bg-secondary/20 hover:bg-secondary/40
+                  border border-transparent hover:border-border
+                  transition-all duration-300 text-left cursor-pointer"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="text-left">
-                      <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground block">
+                  <div className="flex items-start w-full">
+                    <div className="flex-1 pr-6">
+                      <span className="text-sm font-medium leading-snug text-foreground/80 group-hover:text-foreground block">
                         {cert.name}
                       </span>
                       <span className="text-xs text-muted-foreground block mt-0.5">
                         {cert.org}
                       </span>
                     </div>
+                    <ExternalLink
+                      className="w-3 h-3 text-muted-foreground opacity-30
+                 group-hover:opacity-100 transition-all duration-300
+                 flex-shrink-0"
+                    />
                   </div>
-                  <ExternalLink className="w-3 h-3 text-muted-foreground opacity-30 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
                 </button>
+
               ))}
             </div>
           </div>
