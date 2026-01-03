@@ -162,6 +162,8 @@ const EducationCard = () => {
             <div className="space-y-2 pb-1">
               {certifications.map((cert, i) => (
                 <button
+                  key={i}
+                  onClick={() => setSelectedImage(cert.image)}
                   className="group w-full flex items-center p-3 rounded-xl
                   bg-secondary/20 hover:bg-secondary/40
                   border border-transparent hover:border-border
