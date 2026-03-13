@@ -1,6 +1,4 @@
 import {
-  FaReact,
-  FaNodeJs,
   FaHtml5,
   FaCss3,
   FaGitAlt,
@@ -8,10 +6,7 @@ import {
 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import {
-  SiExpress,
-  SiMongodb,
   SiTailwindcss,
-  SiTypescript,
   SiNextdotjs,
   SiUnity,
   SiFirebase
