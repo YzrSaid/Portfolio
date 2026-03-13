@@ -1,15 +1,10 @@
-import {
-  FaHtml5,
-  FaCss3,
-  FaGitAlt,
-  FaGithub,
-} from "react-icons/fa";
+import { FaHtml5, FaCss3, FaGitAlt, FaGithub } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import {
   SiTailwindcss,
   SiNextdotjs,
   SiUnity,
-  SiFirebase
+  SiFirebase,
 } from "react-icons/si";
 import { Code2 } from "lucide-react";
 import { FaFlutter } from "react-icons/fa6";
@@ -79,7 +74,10 @@ const technologies = [
 
 const TechStack = () => {
   return (
-    <div className="rounded-2xl glass-card p-6 h-full flex flex-col justify-center">
+    <div
+      className="rounded-2xl glass-card p-6 flex flex-col"
+      style={{ height: "350px" }}
+    >
       <div className="flex items-center gap-3 mb-5">
         <div className="rounded-lg bg-primary/5 p-2 ring-1 ring-primary/10">
           <Code2 className="w-5 h-5 text-primary" />
@@ -89,22 +87,19 @@ const TechStack = () => {
         </h2>
       </div>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-5">
         {technologies.map((tech, index) => (
           <div
             key={index}
             className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-all duration-300 hover:scale-105 cursor-default ${tech.bg}`}
           >
-            <tech.icon
-              className={`w-5 h-5 !fill-current ${tech.color}`}
-            />
+            <tech.icon className={`w-5 h-5 !fill-current ${tech.color}`} />
             <span className="text-sm font-medium text-foreground/80">
               {tech.name}
             </span>
           </div>
         ))}
       </div>
-
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Loader2, Bot } from "lucide-react";
+import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import ProfilePic from "../../assets/formal_picture.webp";
 
 const ChatBot = () => {
@@ -7,14 +7,14 @@ const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
       role: "bot",
-      text: "Hi there! 👋🏻 Thanks for visiting my website. Feel free to ask me anything about programming, web development, or what do I offer. Let me know how I can help!",
+      text: "Hi there! 👋🏻 Thanks for visiting my portfolio. Feel free to ask me anything about my projects, skills, or what I offer. Let me know how I can help!",
     },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+  const API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -32,61 +32,61 @@ const ChatBot = () => {
     setInput("");
     setIsLoading(true);
 
-    // Context for the AI
-    const systemInstruction = `
-      You are Mohammad Aldrin, the owner of this portfolio.
-      
-      Here is everything you need to know about Sydney:
-      - **Identity**: Sydney Santos is Full Stack Web Developer and a 3rd-year BS Information Systems student at Bulacan Polytechnic College.
-      - **Location**: Bulacan, Philippines.
-      - **What he offers**: He specializes in building scalable web applications, React expertise, MERN stack development, and modern UI/UX design. He is available for commissions and collaborations.
-      - **Tech Stack**: React, JavaScript, Node.js, Express, MongoDB, Tailwind CSS, PHP, MySQL, Git, and GitHub.
-      - **Key Projects**:
-        1. "SpenSyd" (Personal Finance Tracker with AI integration).
-        2. "Let'em Cook" (Community Recipe Sharing Platform).
-        3. "CraftMySite" (Website Builder using PHP & MySQL).
-      - **Achievements/Certificates**: Top 1 in OOP (JavaScript) class, Rank 7 in Web Development, and a Mini Hackathon winner.
-      - **Contact**: sydneysantos176@gmail.com.
-
-      **Rules**:
-      1. Answer as if you are sydney santos.
-      2. Keep answers brief, professional, and friendly.
-      3. If asked about gender (if just someone asked), confirm that his is pronounce is he/him.
-      4. If the user asks something not listed here, suggest they contact Sydney directly via email.
-      5. Social accounts: FB: Sydney Santos, TikTok: @sydd_dev
-      6. If someone asks about certificates, tell the user that my certificates are displayed on my portfolio.
-      
-      User query: ${input}
-    `;
-
     try {
-      // Note: Ensure you are using a valid model. 'gemini-1.5-flash' is the current standard for fast responses.
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  {
-                    text: systemInstruction,
-                  },
-                ],
-              },
-            ],
-          }),
-        }
-      );
+      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "stepfun/step-3.5-flash:free",
+          messages: [
+            {
+              role: "system",
+              content: `You are Mohammad Aldrin Said, the owner of this portfolio. Answer as if you are Aldrin himself.
 
-      if (!response.ok) throw new Error(`API Error: ${response.status}`);
+- **Identity**: Mohammad Aldrin Said, BSIT student at Western Mindanao State University (4th Year, 2022 - Present).
+- **Location**: Zamboanga City, Philippines.
+- **Pronouns**: He/Him.
+- **What he offers**: Mobile & Web development, UI/UX design. Specializes in Unity AR development, Flutter mobile apps, and web development. Available for commissions and collaborations.
+- **Tech Stack**: Unity, Flutter, Next.js, JavaScript, Firebase, Tailwind CSS, Git, GitHub, HTML5, CSS3.
+
+- **Development Projects**:
+  1. "Crimson Map" - An Augmented Reality (AR) campus navigation system for WMSU, developed as a Capstone Project. Built with Unity, Mapbox, Firebase. Live at: https://wmsucrimsonmapadmin.vercel.app/
+  2. "studya.io" - Study Aid App with Pomodoro Technique & Flashcards. Built with Flutter. Live at: https://yzrsaid.github.io/studya.io.com/
+  3. "Al-Furqan Islamic Institute Enrollment and Academic Management System" - Madrasa Enrollment and Academic Management System. Built with Vanilla HTML, JS, CSS.
+
+- **Design Projects**: Crimson Map branding, Libris logo, byteSpace logo, studya.io branding, Personal Layouts (Elective 4), Crimson Map v2 branding/merch, WMSU Palaro 2025 photography, M.A. Yazar book covers (Wattpad pen name).
+
+- **Experience**: Intern Developer at Vintazk Outsourcing (2026 - Present). OJT/Internship. Contributing to frontend development, UI/UX, and collaborative project work.
+
+- **Education**:
+  1. BS Information Technology - Western Mindanao State University (2022 - Present, 4th Year)
+  2. STEM Strand - Zamboanga Chong Hua High School (Graduated 2022)
+
+- **Achievements/Certificates**:
+  1. Ethical Hacking: Understanding the Thin Line - DICT (Webinar Certificate)
+  2. Introduction to Azure Machine Learning - Microsoft (Workshop/Training)
+  3. HTML & CSS Certification Course for Beginners - Udemy (Course Completion)
+  4. Info Session: Kickoff & Intro to Machine Learning - GDSC Club Philippines (Workshop)
+  5. GDSC Info Session at WMSU - Google Developer Student Clubs WMSU
+  6. GDSC Info Session at Tuguegarao - Google Developer Student Clubs Tuguegarao
+
+- **Rules**:
+  1. Answer as Aldrin in first person.
+  2. Keep answers brief, professional, and friendly.
+  3. If asked about certificates, say they are displayed in the Achievements section of the portfolio.
+  4. If asked something not listed, suggest contacting Aldrin directly via the portfolio.`,
+            },
+            { role: "user", content: input },
+          ],
+        }),
+      });
 
       const data = await response.json();
       const botReply =
-        data.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "Sorry, I couldn't reach the server.";
-
+        data.choices?.[0]?.message?.content || "Sorry, I couldn't get a response.";
       setMessages((prev) => [...prev, { role: "bot", text: botReply }]);
     } catch (error) {
       console.error("Chat Error:", error);
@@ -101,7 +101,7 @@ const ChatBot = () => {
 
   return (
     <>
-      {/* 1. Floating Action Button */}
+      {/* Floating Action Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`fixed bottom-6 right-6 h-14 flex items-center justify-center shadow-lg transition-all duration-300 z-50 bg-primary text-primary-foreground cursor-pointer ${
@@ -114,13 +114,13 @@ const ChatBot = () => {
           <div className="flex items-center gap-2">
             <MessageCircle size={24} />
             <span className="font-semibold whitespace-nowrap">
-              Chat with Syd
+              Chat with Aldrin
             </span>
           </div>
         )}
       </button>
 
-      {/* 2. Chat Window */}
+      {/* Chat Window */}
       {isOpen && (
         <div className="fixed bottom-24 right-6 w-[90vw] md:w-96 h-[500px] rounded-xl shadow-2xl flex flex-col z-50 overflow-hidden border border-border bg-card text-card-foreground animate-in slide-in-from-bottom-5 fade-in duration-300">
           {/* Header */}
@@ -129,12 +129,12 @@ const ChatBot = () => {
               <div className="relative">
                 <img
                   src={ProfilePic}
-                  alt="Sydney"
+                  alt="Aldrin"
                   className="w-10 h-10 rounded-full object-cover ring-2 ring-background"
                 />
               </div>
               <div>
-                <h3 className="font-semibold text-sm">Chat with Syd</h3>
+                <h3 className="font-semibold text-sm">Chat with Aldrin</h3>
                 <p className="text-xs text-muted-foreground flex items-center gap-1">
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -166,21 +166,18 @@ const ChatBot = () => {
                     msg.role === "user" ? "items-end" : "items-start"
                   }`}
                 >
-                  {/* Bot Label & Avatar */}
                   {msg.role === "bot" && (
                     <div className="flex items-center gap-2 mb-1">
                       <img
                         src={ProfilePic}
-                        alt="Sydney"
+                        alt="Aldrin"
                         className="w-6 h-6 rounded-full object-cover"
                       />
                       <span className="text-xs text-muted-foreground">
-                        Sydney
+                        Aldrin
                       </span>
                     </div>
                   )}
-
-                  {/* Message Bubble */}
                   <div
                     className={`p-3 text-sm leading-relaxed shadow-sm break-words ${
                       msg.role === "user"
@@ -194,7 +191,6 @@ const ChatBot = () => {
               </div>
             ))}
 
-            {/* Loading State */}
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-muted p-3 rounded-2xl rounded-bl-none flex items-center gap-2">

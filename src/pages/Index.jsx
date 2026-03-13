@@ -4,6 +4,8 @@ import AboutMe from "../components/portfolio/AboutMe";
 import TechStack from "../components/portfolio/TechStack";
 import ProjectsCard from "../components/portfolio/ProjectsCard";
 import EducationCard from "../components/portfolio/EducationCard";
+import ExperienceCard from "../components/portfolio/ExperienceCard";
+import AchievementsCard from "../components/portfolio/AchievementsCard";
 import ChatBot from "../components/portfolio/ChatBot";
 import { ThemeToggle } from "../components/ui/ThemeToggle";
 
@@ -17,7 +19,11 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100 } },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 100 },
+  },
 };
 
 const Index = () => {
@@ -28,16 +34,16 @@ const Index = () => {
       </div>
 
       <motion.div
-        className="container max-w-7xl mx-auto pb-20 "
+        className="container max-w-7xl mx-auto pb-20"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
           {/* PROFILE */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-1 md:row-span-2 lg:col-span-1 lg:row-span-2 h-full"
+            className="lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-4"
           >
             <ProfileCard />
           </motion.div>
@@ -45,7 +51,7 @@ const Index = () => {
           {/* ABOUT */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-2 lg:col-span-3"
+            className="lg:col-start-2 lg:col-end-5 lg:row-start-1 lg:row-end-2"
           >
             <AboutMe />
           </motion.div>
@@ -53,25 +59,34 @@ const Index = () => {
           {/* PROJECTS */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-2 lg:col-span-2"
+            className="lg:col-start-2 lg:col-end-4 lg:row-start-2 lg:row-end-3"
           >
             <ProjectsCard />
           </motion.div>
 
-          {/* EDUCATION */}
+          {/* RIGHT SIDEBAR - Exp + Education only */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-2 lg:col-span-1 lg:row-span-2"
+            className="lg:col-start-4 lg:col-end-5 lg:row-start-2 lg:row-end-4 flex flex-col gap-6"
           >
             <EducationCard />
+            <ExperienceCard />
           </motion.div>
 
-          {/* TECH STACK */}
+          {/* TECH STACK - left side of bottom row */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-1 lg:col-span-3"
+            className="lg:col-start-1 lg:col-end-3 lg:row-start-3 lg:row-end-4"
           >
             <TechStack />
+          </motion.div>
+
+          {/* ACHIEVEMENTS - right side of bottom row */}
+          <motion.div
+            variants={itemVariants}
+            className="lg:col-start-3 lg:col-end-4 lg:row-start-3 lg:row-end-4"
+          >
+            <AchievementsCard />
           </motion.div>
         </div>
       </motion.div>
@@ -79,6 +94,8 @@ const Index = () => {
       <footer className="text-center text-sm text-muted-foreground pb-8">
         <p>© 2025 Mohammad Aldrin Said | Mobile & Web Developer.</p>
       </footer>
+
+      <ChatBot />
     </div>
   );
 };
